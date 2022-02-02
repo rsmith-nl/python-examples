@@ -7,15 +7,10 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2018-01-21 22:44:51 +0100
-# Last modified: 2022-02-02T23:43:39+0100
+# Last modified: 2022-02-03T00:37:44+0100
 .PHONY: clean check format test doc zip
 
-PROJECT:=examples
-
-.if make(zip)
-TAGCOMMIT!=git rev-list --tags --max-count=1
-TAG!=git describe --tags ${TAGCOMMIT}
-.endif
+PROJECT:=tkinter-examples
 
 all::
 	@echo 'you can use the following commands:'
@@ -49,10 +44,10 @@ format::
 #	py.test -v
 
 # Create a zip-file from the most recent tagged state of the repository.
+.if make(zip)
+TAG!=date -u '+%Y%m%dT%H%M%SZ'
+.endif
 zip:: clean
-	cd doc && make clean
-	git checkout ${TAG}
 	cd .. && zip -r ${PROJECT}-${TAG}.zip ${PROJECT} \
 		-x '*/.git/*' '*/.pytest_cache/*' '*/__pycache__/*' '*/.cache/*'
-	git checkout main
 	mv ../${PROJECT}-${TAG}.zip .
