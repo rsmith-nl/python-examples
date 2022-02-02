@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-# file: tkinter-threaded.pyw
+# file: tk-threaded.pyw
 # vim:fileencoding=utf-8:fdm=marker:ft=python
 #
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T21:40:48+0100
-# Last modified: 2022-02-02T23:54:57+0100
+# Last modified: 2022-02-03T00:41:12+0100
 
 from types import SimpleNamespace
 import os

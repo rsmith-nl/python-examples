@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# file: tkinter-color.pyw
+# file: tk-color.pyw
 # vim:fileencoding=utf-8:fdm=marker:ft=python
 #
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T23:48:00+0100
-# Last modified: 2022-02-02T23:54:52+0100
+# Last modified: 2022-02-03T00:41:04+0100
 
 from types import SimpleNamespace
 import os
