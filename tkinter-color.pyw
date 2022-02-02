@@ -5,7 +5,7 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T23:48:00+0100
-# Last modified: 2022-02-02T23:50:09+0100
+# Last modified: 2022-02-02T23:54:52+0100
 
 from types import SimpleNamespace
 import os
@@ -14,7 +14,7 @@ import tkinter as tk
 
 __version__ = "2022.01.28"
 # Namespace for widgets that need to be accessed by callbacks.
-w = SimpleNamespace()
+widgets = SimpleNamespace()
 # State that needs to be accessed by callbacks.
 state = SimpleNamespace()
 
@@ -86,10 +86,10 @@ def do_blue(b):
 # Helper functions
 def update_color():
     value = f"#{state.red:02x}{state.green:02x}{state.blue:02x}"
-    w.show["bg"] = value
+    widgets.show["bg"] = value
 
 
-# Program starts here.
+# Main program starts here.
 if __name__ == "__main__":
     # Detach from the command line on UNIX systems.
     if os.name == "posix":
@@ -97,11 +97,11 @@ if __name__ == "__main__":
             sys.exit()
     # Initialize global state
     state.red, state.green, state.blue = 0, 0, 0
-    # Create the GUI.
+    # Create the GUI window.
     root = tk.Tk(None)
     if os.name == "posix":
         # Make a floating window even if using a tiling window manager.
         # This “-type” is unknown on ms-windows.
         root.attributes("-type", "dialog")
-    create_widgets(root, w)
+    create_widgets(root, widgets)
     root.mainloop()
