@@ -5,8 +5,10 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T23:48:00+0100
-# Last modified: 2022-02-03T07:24:06+0100
+# Last modified: 2022-02-03T20:30:38+0100
+"""Example tkinter script for choosing a color."""
 
+from tkinter.font import nametofont
 from types import SimpleNamespace
 import os
 import sys
@@ -99,5 +101,9 @@ if __name__ == "__main__":
         # Make a floating window even if using a tiling window manager.
         # This “-type” is unknown on ms-windows.
         root.attributes("-type", "dialog")
+    # Set the font
+    default_font = nametofont("TkDefaultFont")
+    default_font.configure(size=12)
+    root.option_add("*Font", default_font)
     create_widgets(root, widgets)
     root.mainloop()

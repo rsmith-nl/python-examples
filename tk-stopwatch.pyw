@@ -5,11 +5,15 @@
 # Copyright © 2020 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2020-04-16T22:14:50+0200
-# Last modified: 2020-04-17T01:29:05+0200
+# Last modified: 2022-02-03T20:39:03+0100
+"""Example tkinter script showing use of the “after” timeout."""
 
+from tkinter.font import nametofont
 import time
-import types
 import tkinter as tk
+import types
+
+__version__ = "2022.02.03"
 
 
 def start():
@@ -40,15 +44,19 @@ def display():
     box.insert(0, display)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Create program state
     state = types.SimpleNamespace()
     state.starttime = None
     state.run = False
     # Create widgets.
     root = tk.Tk()
-    root.title("Stopwatch")
-    root.attributes('-type', 'dialog')
+    root.title("Stopwatch v" + __version__)
+    root.attributes("-type", "dialog")
+    # Set the font
+    default_font = nametofont("TkDefaultFont")
+    default_font.configure(size=12)
+    root.option_add("*Font", default_font)
     # box to display stopwatch
     box = tk.Entry(root, width=20, borderwidth=5)
     box.grid(row=0, column=0)

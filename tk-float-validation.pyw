@@ -5,7 +5,8 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-03T00:45:38+0100
-# Last modified: 2022-02-03T01:01:38+0100
+# Last modified: 2022-02-03T20:33:12+0100
+"""Example tkinter script to show input validation."""
 
 from tkinter.font import nametofont
 from types import SimpleNamespace
