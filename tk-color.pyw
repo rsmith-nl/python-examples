@@ -5,7 +5,7 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T23:48:00+0100
-# Last modified: 2022-02-03T20:30:38+0100
+# Last modified: 2022-02-04T01:21:45+0100
 """Example tkinter script for choosing a color."""
 
 from tkinter.font import nametofont
@@ -34,13 +34,15 @@ def create_widgets(root, w):
     root.rowconfigure(0, weight=1)
     root.rowconfigure(1, weight=1)
     root.rowconfigure(2, weight=1)
+    root.rowconfigure(3, weight=1)
+    root.minsize(400, 100)
     # First row
     tk.Label(root, text="Red").grid(row=0, column=0, sticky="w")
     w.red = tk.Scale(
         root, from_=0, to=255, orient=tk.HORIZONTAL, length=255, command=do_red
     )
     w.red.grid(row=0, column=1, sticky="nsew")
-    w.lf = tk.LabelFrame(root, width=100, height=100, text="preview")
+    w.lf = tk.LabelFrame(root, text="preview")
     w.lf.grid(row=0, column=2, rowspan=3)
     w.show = tk.Frame(w.lf, width=100, height=100, bg="#000000")
     w.show.pack(padx=2, pady=2)
