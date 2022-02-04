@@ -5,7 +5,7 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T23:48:00+0100
-# Last modified: 2022-02-04T03:02:58+0100
+# Last modified: 2022-02-04T16:34:44+0100
 """Example tkinter script for choosing a color."""
 
 import os
@@ -35,7 +35,11 @@ def create_widgets(root, w):
     root.rowconfigure(1, weight=1)
     root.rowconfigure(2, weight=1)
     root.rowconfigure(3, weight=1)
-    root.minsize(400, 100)
+    root.resizable(False, False)
+    # Set the font
+    default_font = tkfont.nametofont("TkDefaultFont")
+    default_font.configure(size=12)
+    root.option_add("*Font", default_font)
     # First row
     tk.Label(root, text="Red").grid(row=0, column=0, sticky="w")
     w.red = tk.Scale(
@@ -103,9 +107,5 @@ if __name__ == "__main__":
         # Make a floating window even if using a tiling window manager.
         # This “-type” is unknown on ms-windows.
         root.attributes("-type", "dialog")
-    # Set the font
-    default_font = tkfont.nametofont("TkDefaultFont")
-    default_font.configure(size=12)
-    root.option_add("*Font", default_font)
     create_widgets(root, widgets)
     root.mainloop()

@@ -5,7 +5,7 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-02T21:40:48+0100
-# Last modified: 2022-02-04T03:07:18+0100
+# Last modified: 2022-02-04T16:39:32+0100
 """Example tkinter script showing the use of a thread."""
 
 import os
@@ -35,6 +35,7 @@ def create_widgets(root, w):
     root.wm_title("tkinter threading v" + __version__)
     root.columnconfigure(2, weight=1)
     root.rowconfigure(3, weight=1)
+    root.resizable(False, False)
     # First row
     tk.Label(root, text="Thread status: ").grid(row=0, column=0, sticky="ew")
     w.runstatus = tk.Label(root, text="not running", width=12)
@@ -109,10 +110,6 @@ if __name__ == "__main__":
     initialize_state(state)
     # Create the GUI window.
     root = tk.Tk(None)
-    if os.name == "posix":
-        # Make a floating window even if using a tiling window manager.
-        # This “-type” is unknown on ms-windows.
-        root.attributes("-type", "dialog")
     # Set the font
     default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)

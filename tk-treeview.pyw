@@ -5,7 +5,7 @@
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2018-05-06T18:37:55+0200
-# Last modified: 2022-02-04T03:09:06+0100
+# Last modified: 2022-02-04T16:42:07+0100
 """Example tkinter script for using a treeview."""
 
 import tkinter.font as tkfont
@@ -21,13 +21,15 @@ if __name__ == "__main__":
     if os.name == "posix":
         if os.fork():
             sys.exit()
-    # create the GUI and run it.
+    # create the UI.
     root = tk.Tk()
     root.wm_title("Tkinter treeview example v" + __version__)
-    root.attributes("-type", "dialog")
+    root.resizable(False, False)
+    # Set the font
     default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)
     root.option_add("*Font", default_font)
+    # Create the treeview.
     tree = ttk.Treeview(root)
     tree["columns"] = ("one", "two")
     tree.column("one", width=100)
@@ -41,6 +43,6 @@ if __name__ == "__main__":
     # alternatively:
     tree.insert("", 3, "dir3", text="Dir 3")
     tree.insert("dir3", 3, text=" sub dir 3", values=("3A", " 3B"))
-
     tree.pack()
+    # Run the program.
     root.mainloop()

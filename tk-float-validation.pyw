@@ -5,7 +5,7 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-03T00:45:38+0100
-# Last modified: 2022-02-04T03:05:46+0100
+# Last modified: 2022-02-04T16:38:43+0100
 """Example tkinter script to show input validation."""
 
 import os
@@ -14,7 +14,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 import types
 
-__version__ = "2022.02.03"
+__version__ = "2022.02.04"
 # Namespace for widgets that need to be accessed by callbacks.
 widgets = types.SimpleNamespace()
 
@@ -32,6 +32,8 @@ def create_widgets(root, w):
     root.option_add("*Font", default_font)
     # General commands and bindings
     root.wm_title("Tkinter float entry v" + __version__)
+    # A not resizable window is apparently a dialog.
+    root.resizable(False, False)
     # Create widgets
     w.qedit = tk.Entry(root, justify="right")
     w.qedit.insert(0, "100")
@@ -73,9 +75,5 @@ if __name__ == "__main__":
             sys.exit()
     # Create the GUI window.
     root = tk.Tk(None)
-    if os.name == "posix":
-        # Make a floating window even if using a tiling window manager.
-        # This “-type” is unknown on ms-windows.
-        root.attributes("-type", "dialog")
     create_widgets(root, widgets)
     root.mainloop()

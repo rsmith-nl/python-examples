@@ -5,7 +5,7 @@
 # Copyright © 2020 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2020-04-16T22:14:50+0200
-# Last modified: 2022-02-04T03:01:58+0100
+# Last modified: 2022-02-04T16:37:22+0100
 """Example tkinter script showing use of the “after” timeout."""
 
 import os
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     # Create widgets.
     root = tk.Tk()
     root.title("Stopwatch v" + __version__)
-    root.attributes("-type", "dialog")
+    root.resizable(False, False)
     # Set the font
     default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)
