@@ -5,18 +5,18 @@
 # Copyright © 2022 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2022-02-03T00:45:38+0100
-# Last modified: 2022-02-03T20:33:12+0100
+# Last modified: 2022-02-04T03:05:46+0100
 """Example tkinter script to show input validation."""
 
-from tkinter.font import nametofont
-from types import SimpleNamespace
 import os
 import sys
 import tkinter as tk
+import tkinter.font as tkfont
+import types
 
 __version__ = "2022.02.03"
 # Namespace for widgets that need to be accessed by callbacks.
-widgets = SimpleNamespace()
+widgets = types.SimpleNamespace()
 
 
 def create_widgets(root, w):
@@ -27,7 +27,7 @@ def create_widgets(root, w):
         w: SimpleNamespace where widgets can be added to.
     """
     # Set the font
-    default_font = nametofont("TkDefaultFont")
+    default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)
     root.option_add("*Font", default_font)
     # General commands and bindings

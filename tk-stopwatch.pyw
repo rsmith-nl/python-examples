@@ -5,12 +5,14 @@
 # Copyright © 2020 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2020-04-16T22:14:50+0200
-# Last modified: 2022-02-03T20:39:03+0100
+# Last modified: 2022-02-04T03:01:58+0100
 """Example tkinter script showing use of the “after” timeout."""
 
-from tkinter.font import nametofont
+import os
+import sys
 import time
 import tkinter as tk
+import tkinter.font as tkfont
 import types
 
 __version__ = "2022.02.03"
@@ -45,6 +47,10 @@ def display():
 
 
 if __name__ == "__main__":
+    # Detach from the command line on UNIX systems.
+    if os.name == "posix":
+        if os.fork():
+            sys.exit()
     # Create program state
     state = types.SimpleNamespace()
     state.starttime = None
@@ -54,7 +60,7 @@ if __name__ == "__main__":
     root.title("Stopwatch v" + __version__)
     root.attributes("-type", "dialog")
     # Set the font
-    default_font = nametofont("TkDefaultFont")
+    default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)
     root.option_add("*Font", default_font)
     # box to display stopwatch

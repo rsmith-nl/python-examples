@@ -5,14 +5,14 @@
 # Copyright © 2018 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2018-05-06T18:37:55+0200
-# Last modified: 2022-02-03T23:39:16+0100
+# Last modified: 2022-02-04T03:09:06+0100
 """Example tkinter script for using a treeview."""
 
-from tkinter.font import nametofont
-from tkinter import ttk
+import tkinter.font as tkfont
 import os
 import sys
 import tkinter as tk
+import tkinter.ttk as ttk
 
 __version__ = "2022.02.03"
 
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.wm_title("Tkinter treeview example v" + __version__)
     root.attributes("-type", "dialog")
-    default_font = nametofont("TkDefaultFont")
+    default_font = tkfont.nametofont("TkDefaultFont")
     default_font.configure(size=12)
     root.option_add("*Font", default_font)
     tree = ttk.Treeview(root)
