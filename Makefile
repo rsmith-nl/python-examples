@@ -7,10 +7,10 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2018-01-21 22:44:51 +0100
-# Last modified: 2022-02-03T00:37:44+0100
-.PHONY: clean check format test doc zip
+# Last modified: 2022-02-05T21:41:46+0100
+.PHONY: clean check format test doc zip working-tree-clean
 
-PROJECT:=tkinter-examples
+PROJECT:=python-examples
 
 all::
 	@echo 'you can use the following commands:'
@@ -28,8 +28,11 @@ clean::
 	find . -type d -name __pycache__ -delete
 
 # Run the pylama code checker
+.if make(check)
+FILES!=find . -type f -name '*.py*'
+.endif
 check:: .IGNORE
-	pylama *.py *.pyw
+	pylama ${FILES}
 
 # Regenerate tags file.
 tags::
@@ -43,11 +46,14 @@ format::
 #test::
 #	py.test -v
 
-# Create a zip-file from the most recent tagged state of the repository.
+# Create a zip-file from the repo, *provided the working tree is clean*.
 .if make(zip)
 TAG!=date -u '+%Y%m%dT%H%M%SZ'
 .endif
-zip:: clean
+zip:: clean working-tree-clean
 	cd .. && zip -r ${PROJECT}-${TAG}.zip ${PROJECT} \
 		-x '*/.git/*' '*/.pytest_cache/*' '*/__pycache__/*' '*/.cache/*'
 	mv ../${PROJECT}-${TAG}.zip .
+
+working-tree-clean::
+	git status | grep -q 'working tree clean'
