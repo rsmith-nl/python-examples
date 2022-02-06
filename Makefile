@@ -7,7 +7,7 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2018-01-21 22:44:51 +0100
-# Last modified: 2022-02-05T21:41:46+0100
+# Last modified: 2022-02-06T14:05:27+0100
 .PHONY: clean check format test doc zip working-tree-clean
 
 PROJECT:=python-examples
@@ -40,7 +40,7 @@ tags::
 
 # Reformat all source code using black
 format::
-	black --include '.*\.pyw' .
+	black --include '.*\.pyw?' .
 
 # Run the test suite
 #test::
