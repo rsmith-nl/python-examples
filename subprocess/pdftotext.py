@@ -1,10 +1,11 @@
+#!/usr/bin/env python
 # file: pdftotext.py
 # vim:fileencoding=utf-8:fdm=marker:ft=python
 #
 # Copyright © 2016 R.F. Smith <rsmith@xs4all.nl>
 # SPDX-License-Identifier: MIT
 # Created: 2016-04-03 16:41:34 +0200
-# Last modified: 2022-02-05T23:51:15+0100
+# Last modified: 2022-02-06T18:55:19+0100
 """
 Extract text from PDF files.
 
