@@ -3,8 +3,9 @@
 # vim:fileencoding=utf-8:fdm=marker:ft=python
 #
 # Copyright © 2017 R.F. Smith <rsmith@xs4all.nl>
+# SPDX-License-Identifier: MIT
 # Created: 2017-12-31 10:46:38 +0100
-# Last modified: 2022-02-05T22:25:45+0100
+# Last modified: 2022-02-06T13:55:07+0100
 """
 Shows usage of a multiprocessing.Manager.
 Edited from my answer to https://stackoverflow.com/questions/48040696.
