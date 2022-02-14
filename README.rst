@@ -4,7 +4,7 @@ Python example programs
 :tags: python
 :author: Roland Smith
 
-.. Last modified: 2022-02-06T20:51:17+0100
+.. Last modified: 2022-02-14T23:25:48+0100
 .. vim:spelllang=en
 
 Introduction
@@ -19,6 +19,12 @@ small experiments for myself.
 
 Most of the programs have information about themselves in the docstring at the
 beginning of the file, just after the header.
+
+These programs are meant for me to remember and for others to learn from.
+Given that there are a number of different programs in this repository,
+releases or packages for this repo should not be expected.
+Just clone the repo or download the zipfile from the ``main`` branch.
+
 
 Requirements
 ============
@@ -44,7 +50,9 @@ standard library.
 The programs in the other directories require additional modules.
 
 Since the ``tkinter`` module is an optional part of the CPython installation,
-you have to make sure it is installed.
+you have to make sure it is installed if you want to try those examples.
+On ms-windows ``tkinter`` is part of the default install. When choosing a custom
+installation, make sure that the “IDLE and tcl/tk” option is selected.
 Some distributions for UNIX-like operating systems put ``tkinter`` in separate
 packages. YMMV.
 
