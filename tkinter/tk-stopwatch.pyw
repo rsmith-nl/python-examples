@@ -5,7 +5,7 @@
 # Copyright © 2020 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2020-04-16T22:14:50+0200
-# Last modified: 2022-02-04T16:37:22+0100
+# Last modified: 2022-09-24T11:20:04+0200
 """Example tkinter script showing use of the “after” timeout."""
 
 import os
@@ -64,11 +64,13 @@ if __name__ == "__main__":
     default_font.configure(size=12)
     root.option_add("*Font", default_font)
     # box to display stopwatch
-    box = tk.Entry(root, width=20, borderwidth=5)
-    box.grid(row=0, column=0)
+    box = tk.Entry(root, width=20, borderwidth=5, takefocus=0)
+    box.grid(row=0, column=0, columnspan=3)
     start_button = tk.Button(root, text="Start", command=start)
     stop_button = tk.Button(root, text="Stop", command=stop)
+    quit_button = tk.Button(root, text="Quit", command=root.quit)
     start_button.grid(row=1, column=0)
-    stop_button.grid(row=2, column=0)
+    stop_button.grid(row=1, column=1)
+    quit_button.grid(row=1, column=2)
     # Run the GUI
     root.mainloop()
