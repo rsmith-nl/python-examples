@@ -5,7 +5,7 @@
 # Copyright © 2020 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2020-04-16T22:14:50+0200
-# Last modified: 2022-09-24T11:20:04+0200
+# Last modified: 2022-09-24T11:24:47+0200
 """Example tkinter script showing use of the “after” timeout."""
 
 import os
@@ -15,7 +15,7 @@ import tkinter as tk
 import tkinter.font as tkfont
 import types
 
-__version__ = "2022.02.03"
+__version__ = "2022.09.24"
 
 
 def start():
