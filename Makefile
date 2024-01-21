@@ -1,5 +1,5 @@
 # file: Makefile
-# vim:fileencoding=utf-8:fdm=marker:ft=make
+# vim:fileencoding=utf-8:ft=make
 #
 # NOTE: This Makefile is only intended for developers.
 #       It is only meant for UNIX-like operating systems.
@@ -7,53 +7,49 @@
 #
 # Author: R.F. Smith <rsmith@xs4all.nl>
 # Created: 2018-01-21 22:44:51 +0100
-# Last modified: 2022-02-06T14:05:27+0100
-.PHONY: clean check format test doc zip working-tree-clean
+# Last modified: 2024-01-21T17:41:49+0100
+.POSIX:
+.PHONY: clean check format test zip working-tree-clean
+.SUFFIXES:
 
 PROJECT:=python-examples
 
-all::
-	@echo 'you can use the following commands:'
-	@echo '* clean: remove all generated files.'
-	@echo '* check: check all python files. (requires pylama)'
-	@echo '* tags: regenerate tags file. (requires uctags)'
-	@echo '* format: format the source. (requires black)'
-#	@echo '* test: run the built-in tests. (requires py.test)'
-#	@echo '* zip: create a zipfile of the latest tagged version.'
 
-# Remove generated files.
-clean::
+# For a Python program, help is the default target.
+help::
+	@echo "Command  Meaning"
+	@echo "-------  -------"
+	@sed -n -e '/##/s/:.*\#\#/\t/p' -e '/@sed/d' Makefile
+
+clean:: ## remove all generated files.
 	rm -f backup-*.tar* ${PROJECT}-*.zip
 	find . -type f -name '*.pyc' -delete
 	find . -type d -name __pycache__ -delete
 
-# Run the pylama code checker
-.if make(check)
 FILES!=find . -type f -name '*.py*'
-.endif
-check:: .IGNORE
+check:: .IGNORE ## check all python files. (requires pylama)
 	pylama ${FILES}
 
-# Regenerate tags file.
-tags::
+tags:: ## regenerate tags file. (requires uctags)
 	uctags -R --languages=Python
 
-# Reformat all source code using black
-format::
-	black --include '.*\.pyw?' .
+format:: ## format the source. (requires black)
+	black ${FILES}
 
-# Run the test suite
-#test::
-#	py.test -v
+# test:: ## run the built-in tests. (requires py.test)
+# 	py.test -v
 
-# Create a zip-file from the repo, *provided the working tree is clean*.
-.if make(zip)
+.ifmake zip
+#TAGCOMMIT!=git rev-list --tags --max-count=1
+#TAG!=git describe --tags ${TAGCOMMIT}
 TAG!=date -u '+%Y%m%dT%H%M%SZ'
 .endif
-zip:: clean working-tree-clean
+zip:: clean ## create a zip-file from the most recent tagged state of the repository.
+#	git checkout ${TAG}
 	cd .. && zip -r ${PROJECT}-${TAG}.zip ${PROJECT} \
 		-x '*/.git/*' '*/.pytest_cache/*' '*/__pycache__/*' '*/.cache/*'
+#	git checkout main
 	mv ../${PROJECT}-${TAG}.zip .
 
-working-tree-clean::
+working-tree-clean:: ## check if the working tree is clean. (requires git)
 	git status | grep -q 'working tree clean'
