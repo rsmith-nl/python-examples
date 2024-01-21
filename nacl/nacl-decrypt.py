@@ -18,7 +18,7 @@ if len(sys.argv) != 4:
     print(f"Usage: {sys.argv[0]} encrypted decripted password")
     sys.exit(1)
 
-key = base64.b64decode(sys.argv[3].encode('ascii'))
+key = base64.b64decode(sys.argv[3].encode("ascii"))
 box = nacl.secret.SecretBox(key)
 print(f"Decoding “{sys.argv[1]}” to “{sys.argv[2]}” with key “{sys.argv[3]}”.")
 

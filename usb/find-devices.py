@@ -14,4 +14,4 @@ if __name__ == "__main__":
     devs = (d for d in usb.core.find(find_all=True) if d.idVendor != 0)
     print("Vendor:Prodct Name")
     for d in devs:
-        print(f"0x{d.idVendor:04X}:0x{d.idProduct:04X} \"{d.product}\"")
+        print(f'0x{d.idVendor:04X}:0x{d.idProduct:04X} "{d.product}"')

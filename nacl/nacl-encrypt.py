@@ -20,7 +20,7 @@ if len(sys.argv) != 3:
 
 key = nacl.utils.random(nacl.secret.SecretBox.KEY_SIZE)
 box = nacl.secret.SecretBox(key)
-kk = base64.b64encode(key).decode('ascii')
+kk = base64.b64encode(key).decode("ascii")
 print(f"Encoding “{sys.argv[1]}” with key “{kk}”.")
 
 begin = time.time()
