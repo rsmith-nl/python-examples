@@ -5,7 +5,7 @@
 # Copyright © 2019 R.F. Smith <rsmith@xs4all.nl>.
 # SPDX-License-Identifier: MIT
 # Created: 2019-08-02T15:49:18+0200
-# Last modified: 2024-01-21T17:23:33+0100
+# Last modified: 2024-05-09T22:05:11+0200
 """
 Script to generate code to embed a file in a Python program.
 The contents of the file are base85 encoded and written out as Python code.
@@ -44,7 +44,7 @@ def embed(path, name, linelen=75):
     lines = [f"{name} = base64.b85decode("]
     i = 0
     while i < len(data):
-        lines.append('    "' + data[i : i + linelen] + '"')
+        lines.append('    "' + data[i: i + linelen] + '"')
         i += linelen
     lines.append(")")
     return os.linesep.join(lines)
